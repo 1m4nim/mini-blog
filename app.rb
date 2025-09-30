@@ -1,19 +1,29 @@
-require "sinatra"
+require 'sinatra'
+require 'sqlite3'
 
-posts=[]
+# DB接続
+DB = SQLite3::Database.new 'blog.db'
+DB.results_as_hash = true
 
-get "/" do 
-    @posts=posts
-    erb :index
+# 記事一覧
+get '/' do
+  @posts = DB.execute("SELECT * FROM posts ORDER BY id DESC")
+  erb :index
 end
 
-get "/new" do
-    erb :new
+# 新規投稿フォーム
+get '/new' do
+  erb :new
 end
 
-post "/create" do
-    title=params[:title]
-    content=params[:content]
-    posts << {title:title, content:content}
-    redirect "/"
+# 投稿保存
+post '/create' do
+  DB.execute("INSERT INTO posts (title, content) VALUES (?, ?)", [params[:title], params[:content]])
+  redirect '/'
+end
+
+# 記事削除
+post '/delete/:id' do
+  DB.execute("DELETE FROM posts WHERE id = ?", [params[:id]])
+  redirect '/'
 end
