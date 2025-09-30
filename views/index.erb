@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>ミニブログ</title>
+</head>
+<body>
+  <h1>記事一覧</h1>
+  <a href="/new">新規投稿</a>
+  <ul>
+    <% @posts.each do |post| %>
+      <li>
+        <h2><%= post[:title] %></h2>
+        <p><%= post[:content] %></p>
+      </li>
+    <% end %>
+  </ul>
+</body>
+</html>
