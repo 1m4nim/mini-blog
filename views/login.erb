@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>管理者ログイン</title>
+    <!-- 既存のstyle.cssやform.cssを読み込みデザインを統一 -->
+    <link rel="stylesheet" href="/css/style.css"> 
+    <link rel="stylesheet" href="/css/form.css">
+</head>
+<body>
+
+    <h1>管理者ログイン 🔐</h1>
+
+    <!-- 認証失敗時のエラーメッセージを表示 -->
+    <% if @error %>
+      <!-- エラーを強調するスタイル -->
+      <p style="color: #ff5c77; text-align: center; font-weight: bold; background-color: #ffe6e9; padding: 10px; border-radius: 10px; max-width: 400px; margin: 20px auto;">
+        <%= @error %>
+      </p>
+    <% end %>
+    
+    <div class="form-container">
+        <!-- ログイン処理（post /login）にデータを送信 -->
+        <form action="/login" method="POST">
+          <p>
+            <label for="username">ユーザー名:</label><br>
+            <input type="text" id="username" name="username" required>
+          </p>
+          <p>
+            <label for="password">パスワード:</label><br>
+            <input type="password" id="password" name="password" required>
+          </p>
+          <p>
+            <!-- フォームCSSの submit-button を適用 -->
+            <button type="submit" class="submit-button">ログイン</button>
+          </p>
+        </form>
+    </div>
+
+    <!-- リンクにも back-link スタイルを適用 -->
+    <p style="text-align: center;"><a href="/" class="back-link">🏠 ブログに戻る</a></p>
+
+</body>
+</html>

@@ -8,19 +8,40 @@
 <body>
 
     <h1>ミニブログ ✨</h1>
-    <a href="/new" class="header-link">新しい記事を投稿する 🎀</a>
+    
+    <%# ログイン状態の表示とログアウト/ログインリンク %>
+    <div style="text-align: right; padding-right: 20px; margin-bottom: 20px;">
+      <% if authorized? %>
+        <%# 管理者としてログイン中の場合 %>
+        <p style="color: #7b4397; font-weight: bold; display: inline-block; margin-right: 15px;">
+          管理者としてログイン中 (<%= ADMIN_USERNAME %>)
+        </p>
+        <a href="/logout" style="color: #ff99c8; font-weight: bold; text-decoration: none;">ログアウト</a>
+      <% else %>
+        <%# 未ログインの場合 %>
+        <a href="/login" style="color: #2a9d8f; font-weight: bold; text-decoration: none;">管理者ログイン</a>
+      <% end %>
+    </div>
+
+    <%# 🚨 ここが修正箇所：「新しい記事を投稿する」リンクをログイン時のみ表示 %>
+    <% if authorized? %>
+        <a href="/new" class="header-link">新しい記事を投稿する 🎀</a>
+    <% end %>
 
     <% @posts.each do |post| %>
-  <div class="post-card">
-    <h2><a href="/posts/<%= post['id'] %>"><%= post['title'] %></a></h2>
-    
-    <p><%= post['content'][0, 100] %>...</p> 
-    
-    <form action="/delete/<%= post['id'] %>" method="POST" class="delete-form">
-      ...
-    </form>
-  </div>
-<% end %>
+      <div class="post-card">
+        <h2><a href="/posts/<%= post['id'] %>"><%= post['title'] %></a></h2>
+        <p><%= post['content'][0, 100] %>...</p> 
+        
+        <%# 削除ボタンもログイン時のみ表示 %>
+        <% if authorized? %>
+            <form action="/delete/<%= post['id'] %>" method="POST" class="delete-form">
+              <button type="submit" style="background-color: #bdbdbd; color: #4a4a4a; padding: 5px 10px; font-size: 0.8em;" 
+                      onclick="return confirm('この記事を削除しますか？')">🗑️ 削除</button>
+            </form>
+        <% end %>
+      </div>
+    <% end %>
 
 </body>
 </html>

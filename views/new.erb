@@ -2,11 +2,23 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>新規投稿 - きらきらミニブログ ✨</title>
+    <title>新規投稿 - ミニブログ ✨</title>
     <link rel="stylesheet" href="/css/style.css"> 
     <link rel="stylesheet" href="/css/form.css"> 
 </head>
 <body>
+    
+    <%# ログイン状態の表示とログアウトリンクの追加 %>
+    <% if authorized? %>
+      <p style="text-align: right; color: #7b4397; font-weight: bold;">
+        管理者としてログイン中 (<%= ADMIN_USERNAME %>) | <a href="/logout" style="color: #ff99c8;">ログアウト</a>
+      </p>
+    <% else %>
+      <%# このパスに来ることは protect! で通常ありませんが、念の為表示 %>
+      <p style="text-align: right;">
+        <a href="/login" style="color: #2a9d8f;">管理者ログイン</a>
+      </p>
+    <% end %>
 
     <h1>新規投稿 ✍️</h1>
     
