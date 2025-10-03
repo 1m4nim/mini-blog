@@ -1,0 +1,36 @@
+/* public/css/show.css */
+
+/* show.erb 専用のスタイルを body に適用 */
+body {
+    max-width: 800px;
+    margin: 0 auto; /* 中央寄せ */
+}
+/* 本文表示エリアのスタイル */
+.content-box {
+    background-color: #ffffff; /* 白い背景 */
+    padding: 25px;
+    border-radius: 15px; /* 角を丸く */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ff99c8; /* 淡いピンクの枠線 */
+    margin-top: 20px;
+    white-space: pre-wrap; /* 改行を反映させる */
+    line-height: 1.6;
+}
+/* アクションリンクのコンテナ */
+.action-links {
+    padding: 15px 0;
+    text-align: center;
+}
+.action-links a {
+    /* index.erb のボタンと同じスタイルを適用 */
+    padding: 8px 12px;
+    background-color: #a8dadc; /* 水色のボタン */
+    color: white;
+    text-decoration: none;
+    border-radius: 15px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+.action-links a:hover {
+    background-color: #7abcc0;
+}

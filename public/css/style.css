@@ -1,0 +1,58 @@
+/* public/css/style.css */
+
+/* 1. 基本設定 */
+body {
+    font-family: 'Arial', 'Helvetica', sans-serif;
+    background-color: #f5f0fa; /* 淡いラベンダー色の背景 */
+    color: #4a4a4a;
+    padding: 20px;
+}
+
+/* 2. ヘッダーとボタン */
+h1 {
+    color: #7b4397; /* 濃いめのパープル */
+    text-align: center;
+    margin-bottom: 30px;
+}
+.header-link, button {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #ff99c8; /* 桜色/ピンク */
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 20px; /* 丸いボタン */
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-bottom: 20px;
+}
+.header-link:hover, button:hover {
+    background-color: #f87aa9;
+}
+
+/* 3. 記事カードのデザイン */
+.post-card {
+    background-color: #ffffff; /* 白い背景 */
+    padding: 20px;
+    margin-bottom: 25px;
+    border-radius: 15px; /* 角を丸く */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 優しい影 */
+    border-left: 5px solid #a8dadc; /* 左側に水色のアクセントライン */
+}
+.post-card h2 a {
+    color: #2a9d8f; /* エメラルドグリーン系の色 */
+    text-decoration: none;
+    font-size: 1.5em;
+}
+.post-card h2 a:hover {
+    text-decoration: underline;
+}
+.post-card p {
+    font-size: 0.9em;
+    color: #6a6a6a;
+    line-height: 1.5;
+}
+.delete-form {
+    display: inline-block;
+}

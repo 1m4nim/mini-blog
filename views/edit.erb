@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>編集: <%= @post['title'] %> - きらきらミニブログ ✨</title>
+    <link rel="stylesheet" href="/css/style.css"> 
+    <link rel="stylesheet" href="/css/form.css"> 
+</head>
+<body>
+
+    <h1>記事の編集 ✏️</h1>
+    
+    <div class="form-container">
+        <form action="/update/<%= @post['id'] %>" method="POST">
+          <p>
+            <label for="title">タイトル:</label><br>
+            <input type="text" id="title" name="title" value="<%= @post['title'] %>" required>
+          </p>
+          <p>
+            <label for="content">本文:</label><br>
+            <textarea id="content" name="content" rows="10" required><%= @post['content'] %></textarea>
+          </p>
+          <p>
+            <button type="submit" class="submit-button">更新する ✨</button>
+          </p>
+        </form>
+    </div>
+
+    <p style="text-align: center;">
+      <a href="/posts/<%= @post['id'] %>" class="back-link">詳細に戻る</a> 
+      | 
+      <a href="/" class="back-link">一覧に戻る</a>
+    </p>
+
+</body>
+</html>
